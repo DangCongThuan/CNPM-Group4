@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ConnectMysqlExample {
-    private static String DB_URL = "jdbc:mysql://localhost:3303/NMPM";
+    private static String DB_URL = "jdbc:mysql://localhost:3306/nmpm";
     private static String USER_NAME = "root";
     private static String PASSWORD = "";
 
@@ -29,7 +29,7 @@ public class ConnectMysqlExample {
             // crate statement
             Statement stmt = conn.createStatement();
             // get data from table 'student'
-            ResultSet rs = stmt.executeQuery("select ID_ACCOUNT , USERS from account");
+            ResultSet rs = stmt.executeQuery("select account_id , user_id from account");
             // show data
             while (rs.next()) {
                 System.out.println(rs.getString(1) + "  " + rs.getString(2));

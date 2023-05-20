@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Đăng nhập</title>
@@ -13,15 +14,17 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<form action="" method="post">
+
+<form action="<c:url value="/login"/>" method="post">
 
 
     <div class="container">
+        <p class="mess-error">${mess}</p>
         <label><b>Email</b></label>
-        <input type="email" placeholder="Nhập email" name="uname" required>
+        <input type="email" placeholder="Nhập email" name="email" required>
 
         <label><b>Mật khẩu</b></label>
-        <input type="password" placeholder="Nhập mật khẩu" name="psw" required>
+        <input type="password" placeholder="Nhập mật khẩu" name="pass" required>
 
         <button type="submit">Đăng nhập</button>
         <label>

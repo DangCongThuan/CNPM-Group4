@@ -6,25 +6,53 @@ import org.example.main.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-public class userService {
-    public static userService instance;
+public class UserService {
+    public static UserService instance;
 
-    public userService() {
+    public UserService() {
 
     }
 
     private List<User> alluser;
 
-    public static userService getInstance() {
+    public static UserService getInstance() {
         if (instance == null) {
-            instance = new userService();
+            instance = new UserService();
         }
         return instance;
     }
+
+    public User login(String email, String pass) {
+
+        {
+            try {
+                Connection conn = ConnectMysqlExample.getConnection(ConnectMysqlExample.getDbUrl(), ConnectMysqlExample.getUserName(), ConnectMysqlExample.getPASSWORD());
+                PreparedStatement ps = conn.prepareStatement(
+                        "SELECT user_id, email, pass, role FROM account WHERE email = ? and pass = ?");
+                ps.setString(1, email);
+                ps.setString(2, pass);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    User user = new User();
+                    user.setId(rs.getString(1));
+                    user.setEmail(rs.getString(2));
+                    user.setPassword(rs.getString(3));
+                    user.setRole(rs.getInt(4));
+                    return user;
+                }
+                conn.close();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+
+        }
+        return null;
+    }
+
 
     public User getIF(String Uid) {
         User user = new User();
