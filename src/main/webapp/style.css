@@ -55,3 +55,24 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.edit-exercise-form {
+  border: 3px solid #f1f1f1;
+  max-width: 500px;
+  background-color: #fff;
+  margin: 30px auto 0;
+}
+
+.edit-exercise-form input {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button a {
+  text-decoration: none;
+  color: #fff;
+}

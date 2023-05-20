@@ -15,6 +15,7 @@
 </head>
 <body>
 
+<div class="wrap">
 <form action="<c:url value="/login"/>" method="post">
 
 
@@ -39,5 +40,7 @@
         <span>Không có tài khoản <a href="#">đăng ký ngay?</a></span>
     </div>
 </form>
+</div>
+
 </body>
 </html>

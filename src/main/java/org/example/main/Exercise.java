@@ -1,22 +1,30 @@
 package org.example.main;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Exercise {
     private String id;
-    private String Name;
+
+    private String userId;
+    private String name;
     private int caloriePerHour;
     private int duration;
     private int totalCalorie;
-    private Timestamp date;
+    private String exDate;
 
-    public Exercise(String id, String name, int caloriePerHour, int duration, int totalCalorie, Timestamp date) {
+    public Exercise(String id, String userId, String name, int caloriePerHour, int duration, int totalCalorie, String exDate) {
         this.id = id;
-        Name = name;
+        this.userId = userId;
+        this.name = name;
         this.caloriePerHour = caloriePerHour;
         this.duration = duration;
         this.totalCalorie = totalCalorie;
-        this.date = date;
+        this.exDate = exDate;
+    }
+
+    public Exercise() {
+
     }
 
     public String getId() {
@@ -27,12 +35,20 @@ public class Exercise {
         this.id = id;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getCaloriePerHour() {
@@ -59,11 +75,11 @@ public class Exercise {
         this.totalCalorie = totalCalorie;
     }
 
-    public Timestamp getDate() {
-        return date;
+    public String getExDate() {
+        return exDate;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setExDate(String exDate) {
+        this.exDate = exDate;
     }
 }

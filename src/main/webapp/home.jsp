@@ -34,7 +34,7 @@
   <section>
     <h2>Hoạt động trong ngày</h2>
     <p>Xem, cập nhật các hoạt động đã thực hiện trong ngày.</p>
-    <button>Xem ngay</button>
+    <button><a href="<c:url value="/table-exercise"/>">Xem ngay</a></button>
   </section>
 </main>
 <footer>

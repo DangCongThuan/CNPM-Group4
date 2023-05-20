@@ -13,7 +13,7 @@ public class LoginController extends HttpServlet {
     private UserService userService = UserService.getInstance();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendRedirect("login.jsp");
     }
 
     @Override
@@ -27,8 +27,8 @@ public class LoginController extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
-            session.setAttribute("User", user);
-            response.sendRedirect("index.html");
+            session.setAttribute("user", user);
+            response.sendRedirect("home.jsp");
         }
     }
 }

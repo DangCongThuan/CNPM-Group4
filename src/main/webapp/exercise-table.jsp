@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +45,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-xs-6">
-                        <h2>Manage <b>Employees</b></h2>
+                        <h2>Bảng <b>Hoạt Động</b></h2>
                     </div>
                     <div class="col-xs-6">
                         <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm hoạt động</span></a>
@@ -56,20 +57,23 @@
                 <tr>
                     <th>Tên</th>
                     <th>Lượng calo</th>
-                    <th>Thời gian</th>
+                    <th>Ngày</th>
                     <th>Hành động</th>
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="i" items="${listEx}">
+
                 <tr>
-                    <td>Thomas Hardy</td>
-                    <td>thomashardy@mail.com</td>
-                    <td>89 Chiaroscuro Rd, Portland, USA</td>
+                    <td>${i.name}</td>
+                    <td>${i.totalCalorie}</td>
+                    <td>${i.exDate}</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a href="<c:url value="/edit-exercise?exId=${i.id}"/>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="<c:url value="/delete-exercise?exId=${i.id}"/>" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
+                </c:forEach>
                 </tbody>
             </table>
 
@@ -80,7 +84,7 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form action="<c:url value="/add-exercise"/>" method="post">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm hoạt động</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -88,19 +92,19 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" name="exercise-name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Lượng calo</label>
-                        <input type="number" class="form-control" required>
+                        <input type="number" name="total-calorie" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Thời lượng (giờ)</label>
-                        <input type="number" class="form-control" required>
+                        <input type="number" name="duration" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Thời gian</label>
-                        <input type="datetime-local" class="form-control" required>
+                        <label>Ngày</label>
+                        <input type="datetime-local" name="ex-date" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
