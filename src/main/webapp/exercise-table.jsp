@@ -20,6 +20,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="exercise-table.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
         $(document).ready(function(){
             // Activate tooltip
@@ -171,5 +173,17 @@
         </div>
     </div>
 </div>
+ 
+<c:if test="${2 < 1}">
+    <script>
+        Toastify({
+            text: "This is a toast",
+            className: "info",
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+        }).showToast();
+    </script>
+</c:if>
 </body>
 </html>
